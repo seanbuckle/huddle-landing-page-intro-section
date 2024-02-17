@@ -1,0 +1,213 @@
+@font-face {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: normal;
+  font-display: swap;
+  src: local("Open Sans"), url(./fonts/open-sans.woff2) format("woff2");
+}
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Poppins"), url(./fonts/poppins-regular.woff2) format("woff2");
+}
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: local("Poppins"), url(./fonts/poppins-semibold.woff2) format("woff2");
+}
+:root {
+  --ff-1: "Open Sans", sans-serif;
+  --ff-2: "Poppins", sans-serif;
+  --f-wgt-400: 400;
+  --f-heading: 600 clamp(1.5rem, 5vw, 2.5rem) / clamp(2.25rem, 5vw, 3.75rem)
+    var(--ff-2);
+  --f-body: var(--f-wgt-400) clamp(1rem, 5vw, 1.125rem) /
+    clamp(1.5rem, 5vw, 1.6875rem) var(--ff-1);
+  --f-btn: var(--f-wgt-400) clamp(0.75rem, 5vw, 1.125rem) /
+    clamp(1.125rem, 5vw, 1.6875rem) var(--ff-2);
+}
+
+:root {
+  --clr-primary: oklch(49.65% 0.2842 292.97);
+  --clr-accent-1: oklch(74.94% 0.2814 327.19);
+  --clr-accent-2: oklch(70.88% 0.3049 345.29899048787706);
+  --clr-neutral: oklch(100% 0 0);
+}
+
+* {
+  padding: 0;
+  border: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+::selection {
+  background-color: var(--clr-accent-1);
+  color: var(--clr-neutral);
+}
+
+body {
+  min-height: 100dvh;
+  display: grid;
+  grid-template-areas: ". header ." ". main ." ". footer .";
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: minmax(2.5rem, auto) min(100% - 5rem, 79.69rem) minmax(
+      2.5rem,
+      auto
+    );
+  font: var(--f-body);
+  background-image: url(../images/bg-mobile.svg);
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-color: var(--clr-primary);
+  color: var(--clr-neutral);
+}
+@media screen and (width > 48rem) {
+  body {
+    background-image: url(../images/bg-desktop.svg);
+    background-size: cover;
+    background-position: left;
+  }
+}
+@supports (text-wrap: pretty) {
+  body {
+    text-wrap: pretty;
+  }
+}
+
+header {
+  padding-block: 2.39rem 4.36rem;
+  grid-area: header;
+}
+header img {
+  width: 7.5rem;
+  height: auto;
+  transition: all 300ms ease;
+}
+@media screen and (width > 48rem) {
+  header {
+    padding-block: 4rem 0;
+  }
+  header img {
+    width: 12.5rem;
+  }
+}
+
+h1 {
+  font: var(--f-heading);
+}
+@supports (text-wrap: balance) {
+  h1 {
+    text-wrap: balance;
+  }
+}
+
+main {
+  grid-area: main;
+  transition: all 300ms ease;
+}
+@media screen and (width > 48rem) {
+  main {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    place-items: center;
+  }
+}
+
+.mockup {
+  max-width: 100%;
+  transition: all 500ms ease;
+}
+
+.text-content {
+  padding-block-start: 3.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  text-align: center;
+  align-items: center;
+}
+@media screen and (width > 48rem) {
+  .text-content {
+    padding-inline-start: 3.69rem;
+    text-align: unset;
+    align-items: unset;
+  }
+}
+
+.btn {
+  width: 12.5rem;
+  height: 3.5rem;
+  border-radius: 1.75rem;
+  font: var(--f-btn);
+  background-color: var(--clr-neutral);
+  color: var(--clr-primary);
+  box-shadow: 2px 4px 9px 3px oklch(0% 0 0/26%);
+  cursor: pointer;
+  transition: all 300ms ease;
+}
+.btn:hover {
+  background-color: var(--clr-accent-1);
+  color: var(--clr-neutral);
+}
+
+.attribution {
+  padding-block: 4rem 1rem;
+  grid-area: footer;
+  font-size: 1rem;
+  text-align: center;
+  display: grid;
+  grid-template-rows: repeat(2, auto);
+  gap: 1rem;
+}
+.attribution a {
+  color: var(--clr-accent-2);
+}
+.attribution a:hover {
+  text-decoration: none;
+}
+@media screen and (width > 48rem) {
+  .attribution {
+    padding-block: 1rem;
+  }
+}
+
+.social-links {
+  width: min-content;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  justify-self: center;
+}
+@media screen and (width > 48rem) {
+  .social-links {
+    justify-self: end;
+  }
+}
+.social-links__link {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  border: 1.176px solid var(--clr-neutral);
+  background-color: transparent;
+  fill: var(--clr-neutral);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 300ms ease;
+}
+.social-links__link svg {
+  width: 1.1765rem;
+  aspect-ratio: 1/1;
+}
+.social-links__link:hover {
+  border-color: var(--clr-accent-2);
+  fill: var(--clr-accent-2);
+}
+
+/*# sourceMappingURL=style.css.map */
